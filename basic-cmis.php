@@ -13,6 +13,7 @@ $PLUGIN_PATH = dirname(__FILE__).'/';
 require_once($PLUGIN_PATH . '/admin.php');
 require_once ($PLUGIN_PATH . '/lib/cmis_repository_wrapper.php');
 require_once ($PLUGIN_PATH . '/stream.php');
+require_once ($PLUGIN_PATH . 'lib/cmis_service.php');
 
 /*
 Define CMIS shortcode
@@ -50,7 +51,7 @@ function do_cmis($folder, $tree, $keywords, $name) {
     try {
         if ($folder) {
             $f = $client->getObjectByPath($folder);
-            array_push($query_conditions, "IN_FOLDER('$f->id')");
+            array_push($query_conditions, "IN_FOLDER(d,'$f->id')");
         }
         elseif ($tree) {
             $f = $client->getObjectByPath($tree);

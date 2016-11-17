@@ -1,14 +1,38 @@
 # Basic CMIS for Wordpress
 
-**Contributors**:       [ansonhoyt](https://twitter.com/ansonhoyt @ansonhoyt)  
-**Tags**:               cmis, alfresco  
-**Requires at least**:  3.3.1 (let us know if it works on an earlier version)  
-**Tested up to**:       3.3.2  
-**Plugin URI**:         https://github.com/TIU11/Basic-CMIS  
-**Version**:            0.0.3-alpha  
-**Author**:             Anson Hoyt  
-**Author URI**:         https://github.com/ansonhoyt  
-**License**:            LGPLv3  
+## FORK description
+
+This fork has been tested with Alfresco 5.0.d or upper and includes last CMIS PHP client
+
+CMIS PHP client is CMIS 1.0 compliant, so allowed Alfresco URLs should be like:
+
+http://localhost:8080/alfresco/cmisatom
+
+or
+
+http://localhost:8080/alfresco/api/-default-/public/cmis/versions/1.0/atom
+
+*Below original project README is included*
+
+--
+
+**Contributors**:       [ansonhoyt](https://twitter.com/ansonhoyt @ansonhoyt)
+
+**Tags**:               cmis, alfresco
+
+**Requires at least**:  3.3.1 (let us know if it works on an earlier version)
+
+**Tested up to**:       3.3.2
+
+**Plugin URI**:         https://github.com/TIU11/Basic-CMIS
+
+**Version**:            0.0.3-alpha
+
+**Author**:             Anson Hoyt
+
+**Author URI**:         https://github.com/ansonhoyt
+
+**License**:            LGPLv3
 
 ## Description
 
