@@ -20,6 +20,7 @@ Define CMIS shortcode
 
 Usage:
     [cmis folder="/my particular/folder name/"] # Docs in the folder
+    [cmis doc="/my particular/folder name/document name"] # Doc link
     [cmis tree="/my particular/folder name/"]   # Docs in the folder, including subfolders
     [cmis keywords="coffee tea"]                # Docs containing the keywords
     [cmis name="Agenda%.doc"]                   # Docs whose name matches. May include wildcard character '%'.
@@ -27,19 +28,20 @@ Usage:
 function cmis_shortcode( $attr, $content = null ) {
     extract( shortcode_atts( array(
       'folder' => '',
+      'doc' => '',
       'tree' => '',
       'keywords' => '',
       'name' => '',
       ), $attr ) );
 
-    return do_cmis($folder, $tree, $keywords, $name);
+    return do_cmis($folder, $doc, $tree, $keywords, $name);
 }
 add_shortcode('cmis', 'cmis_shortcode');
 
 /*
 Perform specified retrieve and return rendered table of documents.
 */
-function do_cmis($folder, $tree, $keywords, $name) {
+function do_cmis($folder, $doc, $tree, $keywords, $name) {
     // Initialize CMIS Client
     $repo_url = get_option('cmis_repository_url');
     $repo_username = get_option('cmis_username');
@@ -52,6 +54,10 @@ function do_cmis($folder, $tree, $keywords, $name) {
         if ($folder) {
             $f = $client->getObjectByPath($folder);
             array_push($query_conditions, "IN_FOLDER(d,'$f->id')");
+        }
+        elseif ($doc) {
+            $d = $client->getObjectByPath($doc);
+            return display_cmis_object($d);
         }
         elseif ($tree) {
             $f = $client->getObjectByPath($tree);
